@@ -24,7 +24,8 @@ class MainGame:
         self.reciept = pygame.transform.rotozoom(pygame.image.load('Assets/reciept.png').convert_alpha(), 0, 2.25)
 
         # printing text to screen
-        self.text_font = pygame.font.SysFont("Courier", 35)
+        self.text_font = pygame.font.Font("pixel.ttf", 45)
+        self.text_font1 = pygame.font.Font("pixel.ttf", 150)
 
         self.slime = Player()
         self.food_group = pygame.sprite.Group()
@@ -89,6 +90,9 @@ class MainGame:
                     sprite.kill()
                     self.create_new_food()
 
+            if self.slime.alive == False:
+                self.draw_text("Game Over", self.text_font1, (0, 0, 0), 540, 430)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -99,5 +103,6 @@ class MainGame:
 
 
 game = MainGame()
+
 
 
